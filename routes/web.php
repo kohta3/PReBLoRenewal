@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\HotelSerchController;
 use App\Http\Controllers\InfomationController;
+use App\Http\Controllers\Search;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InformationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,11 @@ use App\Http\Controllers\InformationController;
 |
 */
 
-Route::resource('/','App\Http\Controllers\InfomationController');
+Route::resource('/info',InfomationController::class);
+Route::get('hotel', [HotelSerchController::class, 'index'])->name('hotel');
+Route::get('hotel/show/{middleArea}/{smallArea}', [HotelSerchController::class, 'show'])->name('hotel.show');
+Route::get('hotel/search/{kindOf}/{key}', [SearchController::class,'SearchGenre'])->name('search');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

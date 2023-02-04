@@ -6,6 +6,11 @@ use App\Information;
 use App\Models\Infomation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Libs\Common;
+use App\Models\Categories;
+use App\Models\Prefecture;
+use App\Models\User;
+use Hamcrest\Core\IsEqual;
 
 class InfomationController extends Controller
 {
@@ -21,15 +26,14 @@ class InfomationController extends Controller
             ->join('users', 'information.user_id', '=', 'users.id')
             ->select('information.id', 'information.comment', 'information.image', 'information.pref', 'information.city', 'information.tittle', DB::raw("count(information.id) as count"))
             ->selectRaw('users.name as user_name')
-            ->groupBy('information.id','users.id')
-            ->orderBy('count','DESC')
+            ->groupBy('information.id', 'users.id')
+            ->orderBy('count', 'DESC')
             ->take(3)
-            ->get()
-            ;
-
-        $infos = Infomation::orderBy('created_at','DESC')->take(12)->get();
-        
-        return view('index', compact('famouses','infos'));
+            ->get();
+        $infos = Infomation::orderBy('created_at', 'DESC')->take(12)->get();
+        $categories = Categories::orderBy('id', 'ASC')->get();
+        $prefecture = Prefecture::orderBy('id', 'ASC')->get();
+        return view('infomation.index', compact('famouses', 'infos','categories','prefecture'));
     }
 
     /**
@@ -61,7 +65,16 @@ class InfomationController extends Controller
      */
     public function show($id)
     {
-        //
+        $detail = Infomation::find($id);
+        $user =User::find($detail->user_id);
+        $common = new Common();
+        $hotelList[] = $common->rakuten($detail->lat,$detail->long);
+        if ($hotelList[0][0]=='nodata') {
+            $hotelList[] = array();
+        }
+        $restaurantList[] = $common->hotepapper($detail->lat,$detail->long);
+
+        return view('infomation.show', compact('detail','hotelList','user','restaurantList'));
     }
 
     /**

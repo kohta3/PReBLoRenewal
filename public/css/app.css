@@ -1,14 +1,34 @@
+/* Google font Icon */
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=M+PLUS+Rounded+1c:wght@500;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Hachi+Maru+Pop&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
+
+
+
 /* 全体 */
 body {
+    width: 100%;
     margin: 0;
     background: linear-gradient(white, rgb(157, 216, 243));
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    min-height: 100vh
 }
 
-section h1,
-h2,
-h3 {
+.index section h1,
+.index h2,
+.index h3 {
     font-size: medium;
     margin-bottom: 0;
+}
+
+.listNone {
+    list-style: none;
+}
+
+.pop-font{
+    font-family: 'Hachi Maru Pop', cursive;
 }
 
 /* ヘッダーの設定 */
@@ -41,16 +61,47 @@ h3 {
 }
 
 .btn {
+    height: 60px;
+    width: 80px;
     color: white;
-    background-color: rgba(111, 184, 184, 0.548);
-    border-radius: 50px;
+    background: linear-gradient(to top right ,blue, 30%, rgb(233, 129, 247) , skyblue);
+    border-radius: 50% 10%;
+    transition: all 0.5s 0s ease;
+    border: solid 3px rgb(0, 174, 255);
+    position: fixed;
+    bottom: 50px;
+    right: 10%;
 }
 
 .btn:hover {
     color: white;
-    background-color: rgb(183, 207, 95);
-    border-radius: 15px;
+    background: linear-gradient(to top left ,blue, 30%, rgb(233, 129, 247) , skyblue);
+    border-radius: 10% 50%;
     transform: scale(1.2, 1.2);
+    border: solid 3px rgb(0, 174, 255);
+}
+
+.addBtn {
+    -webkit-text-stroke: 0.5px #000;
+    font-weight: bold;
+    color: rgb(157, 216, 243);
+    font-size: x-large;
+    font-family: 'DotGothic16', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.btn-font {
+    font-size: 150px;
+    color: white;
+}
+
+.headerMenu{
+    font-family: 'Potta One', cursive;
+}
+
+.pagenate{
+    display: flex;
+    justify-content: center;
 }
 
 /* サイドバー のメインコンテンツ*/
@@ -148,7 +199,15 @@ h3 {
     }
 }
 
-/* famous */
+/* TOPページ */
+.観光,
+.宿泊,
+.飲食 {
+    display: none;
+    list-style: none;
+    text-align: center;
+}
+
 #famous,
 #newAdd {
     margin: 3px;
@@ -166,6 +225,7 @@ h3 {
     position: relative;
     width: 100%;
     padding: 0;
+    transition: all 0.5s 0s ease;
 }
 
 .base-relative:hover {
@@ -205,4 +265,226 @@ print {
     .Commercial {
         display: none;
     }
+}
+
+
+/* addNew */
+/* pc画面 */
+@media screen and (min-width: 768px),
+print {
+    .pop-up {
+        position: absolute;
+        border: solid;
+        background-color: antiquewhite;
+        border-radius: 15px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 25%;
+        height: 700px;
+        background-image: url("../img/雪だるま.png");
+    }
+
+    .pop-up form label {
+        width: 30%;
+        height: auto;
+        margin: auto 5px;
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    .pop-up form input,
+    .pop-up form textarea {
+        width: 70%;
+        margin: auto 0;
+    }
+}
+
+/* スマホ画面 */
+@media screen and (max-width: 768px) {
+    .pop-up {
+        position: absolute;
+        border: solid;
+        background-color: antiquewhite;
+        border-radius: 15px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        width: 80%;
+        height: 700px;
+    }
+
+    .pop-up form label {
+        width: 25%;
+        height: auto;
+        margin: auto 5px;
+        text-align: right;
+        white-space: nowrap;
+        font-size: 1vw;
+    }
+
+    .pop-up form input,
+    .pop-up form textarea {
+        width: 75%;
+        margin: auto 0;
+    }
+}
+
+.pop-up-div {
+    width: 90%;
+    display: flex;
+    margin: 3px auto;
+}
+
+#pop-up {
+    display: none;
+}
+
+.pop-up-child {
+    text-align: right;
+}
+
+.pop-up-child p {
+    width: 50px;
+    margin: 0 5px 0 auto;
+    padding: auto;
+    font-size: x-large;
+    text-align: center;
+}
+
+.pop-up-child p:hover {
+    cursor: pointer;
+    color: blue;
+    font-weight: bold;
+}
+
+/* ホテル検索ページ */
+.hotelShow {
+    width: 95%;
+    height: 100%;
+    background: linear-gradient(rgb(157, 216, 243), #cfe2f3ff);
+    margin: 15px auto;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.hotelShow .hotelShowTitle {
+    font-size: x-large;
+    width: 100%;
+    color: orange;
+}
+
+.hotelShowImage {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+.planAndReview {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+/* ホテルインデックスに実装したcss */
+.hotelIndexLeft {
+    min-height: 100vh;
+    background: linear-gradient(rgba(157, 216, 243, 0.3), rgba(245, 0, 243, 0.3));
+}
+
+.hotelIndexLeft p {
+    font-size: large;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: solid 1px;
+    transition: 0.5s ease;
+    color: rgb(255, 153, 0);
+}
+
+.hotelIndexLeft p:hover {
+    background-color: cadetblue;
+}
+
+.hotelIndexLeft label {
+    width: 100%;
+    cursor: pointer;
+    color: coral;
+}
+
+.hotelIndexLeft label:hover {
+    background-color: rgb(97, 218, 255);
+    transition: 0.5s ease;
+}
+
+
+.北海道・東北,
+.関東,
+.北陸,
+.中部,
+.関西,
+.中国,
+.四国,
+.九州・沖縄 {
+    display: none;
+    text-align: center;
+}
+
+/* ジャンルor都道府県別絞り込み */
+.genreOrPref {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.genreOrPrefImg {
+    width: 100%;
+    aspect-ratio: 3/2;
+    padding: 3px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.KindAbsolute {
+    position: absolute;
+    background-color: rgba(122, 213, 255, 0.5);
+}
+
+.ul {
+    position: absolute;
+    list-style: none;
+    display: flex;
+    bottom: 0;
+    right: 0;
+    padding: 0 5px 0 0;
+    margin: 0;
+    font-weight: bold;
+    font-family: 'DotGothic16', sans-serif;
+    font-family: 'Hachi Maru Pop', cursive;
+    background-color: rgba(122, 213, 255, 0.5);
+}
+
+.ul li{
+    font-size: x-small;
+}
+
+.genreOrPrefImg p {
+    color: black;
+    margin: 0;
+    padding: 0 5px;
+    font-weight: bold;
+    font-family: 'DotGothic16', sans-serif;
+    font-family: 'Hachi Maru Pop', cursive;
+}
+
+.genreOrPref img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
 }

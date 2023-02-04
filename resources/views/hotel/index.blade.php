@@ -1,0 +1,64 @@
+@extends('layout.app')
+@section('body')
+<div class="snow"><i class="fas fa-snowflake"></i></div>
+<div class="snow snow2nd"><i class="fas fa-snowflake"></i></div>
+<div class="h-100 w-100 m-0 index">
+    <div class="text-center m-0 row w-100">
+        <div class="m-0 col-md-3 hotelIndexLeft">
+            @foreach ($middleArea as $key=>$value)
+                    @if ($key=='hokkaido')
+                    @php $i = 0; @endphp
+                    <p id="Area{{$i}}">北海道・東北</p>
+                    @elseif ($key=='ibaragi')
+                    @php $i = 1; @endphp
+                    <p id="Area{{$i}}">関東</p>
+                    @elseif ($key=='niigata')
+                    @php $i = 2; @endphp
+                    <p id="Area{{$i}}">北陸</p>
+                    @elseif ($key=='yamanasi')
+                    @php $i = 3; @endphp
+                    <p id="Area{{$i}}">中部</p>
+                    @elseif ($key=='shiga')
+                    @php $i = 4; @endphp
+                    <p id="Area{{$i}}">関西</p>
+                    @elseif ($key=='tottori')
+                    @php $i = 5; @endphp
+                    <p id="Area{{$i}}">中国</p>
+                    @elseif ($key=='tokushima')
+                    @php $i = 6; @endphp
+                    <p id="Area{{$i}}">四国</p>
+                    @elseif ($key=='hukuoka')
+                    @php $i = 7; @endphp
+                    <p id="Area{{$i}}">九州</p>
+                    @endif
+                    <div id="{{$key}}" class="Area{{$i}}">
+                        <label>{{$value}}</label>
+                        <ul class="p-0">
+                            @foreach ($smallArea[$key] as $keySmall=>$valueSmall)
+                                <li class="listNone"><a href="{{ route('hotel.show',['middleArea'=>$key,'smallArea'=>$keySmall])}}">{{$valueSmall}}</a></li>
+                            @endforeach
+                        </ul>
+                    </div>
+            @endforeach
+        </div>
+    </div>
+    <div class="w-25"></div>
+</div>
+<script>
+    let AreaMap =@json($middleArea);
+    for (const key in @json($middleArea)) {
+        let parent = $('#'+key);
+        let ul = parent.children('ul');
+        ul.hide();
+        parent.children('label').on('click',function(key) {
+            if (ul.css('display') == 'none') {
+                ul.show();
+            }else{
+                ul.hide();
+            }
+        })
+    }
+
+</script>
+@endsection
+
