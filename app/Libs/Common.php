@@ -78,7 +78,6 @@ class Common
 
     function hotelSearchShow($middleClass,$smallClass){
             $client = new Client;
-            $hotel=array();
             $json_res = $client->request(
                 'GET',
                 "https://app.rakuten.co.jp/services/api/Travel/SimpleHotelSearch/20170426??",
@@ -94,11 +93,29 @@ class Common
                 ]
             )->getBody();
             $hotelArea = json_decode($json_res, true);
-            foreach ($hotelArea['hotels'] as $hotelList) {
-                array_push($hotel,$hotelList['hotel'][0]['hotelBasicInfo']);
-            }
             return $hotelArea;
     }
 
+    function hotelLanking(){
+        $client = new Client;
+        $hotel=array();
+        $json_res = $client->request(
+            'GET',
+            "https://app.rakuten.co.jp/services/api/Travel/HotelRanking/20170426?",
+            [
+                'query' => [
+                    'format'=>'json',
+                    'genre'=>'onsen',
+                    'affiliateId'=>'20c8801b.9bc4906b.20c8801c.3a69e429',
+                    'applicationId'=>'1001393711643575856'
+                ], 'verify' => false,'http_errors' => false
+            ]
+        )->getBody();
+        $hotelArea = json_decode($json_res, true);
+        foreach ($hotelArea['Rankings'][0]['Ranking']['hotels'] as $hotelList) {
+            array_push($hotel,$hotelList['hotel']);
+        }
+        return $hotel;
+}
 
 }

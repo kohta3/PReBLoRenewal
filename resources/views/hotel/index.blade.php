@@ -5,6 +5,7 @@
 <div class="h-100 w-100 m-0 index">
     <div class="text-center m-0 row w-100">
         <div class="m-0 col-md-3 hotelIndexLeft">
+            <h1 class="my-3">地域で検索</h1>
             @foreach ($middleArea as $key=>$value)
                     @if ($key=='hokkaido')
                     @php $i = 0; @endphp
@@ -41,8 +42,20 @@
                     </div>
             @endforeach
         </div>
+        <div class="col-md-9 row mb-4 mx-0">
+            <h1 class="col-md-12 text-left smart-font">ランキング</h1>
+            @foreach ($hotelRanking as $hotel)
+            <div class="col-md-3 my-3 hotelRank smart-font">
+                <div class="w-100">
+                    <a href="{{$hotel['hotelInformationUrl']}}">
+                        <img src="{{$hotel['hotelImageUrl']}}" alt="" class="hotelRankImage">
+                    </a>
+                </div>
+                <h3 class="text-left">{{$hotel['rank'].$hotel['hotelName']}}</h3>
+            </div>
+            @endforeach
+        </div>
     </div>
-    <div class="w-25"></div>
 </div>
 <script>
     let AreaMap =@json($middleArea);

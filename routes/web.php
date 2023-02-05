@@ -17,10 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/info',InfomationController::class);
+Route::resource('/info', InfomationController::class);
 Route::get('hotel', [HotelSerchController::class, 'index'])->name('hotel');
-Route::get('hotel/show/{middleArea}/{smallArea}', [HotelSerchController::class, 'show'])->name('hotel.show');
-Route::get('hotel/search/{kindOf}/{key}', [SearchController::class,'SearchGenre'])->name('search');
+Route::get('hotel/show/{middleArea}/{smallArea}', [HotelSerchController::class, 'show'])->name('hotel.show')->middleware();
+Route::get('hotel/search/{kindOf}/{key}', [SearchController::class,'SearchGenre'])->name('search')->middleware();
 
 Auth::routes();
 

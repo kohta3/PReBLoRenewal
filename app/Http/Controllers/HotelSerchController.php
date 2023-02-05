@@ -16,6 +16,7 @@ class HotelSerchController extends Controller
     {
         $common = new Common();
         $area=$common->hotelSearch();
+        $hotelRanking = $common->hotelLanking();
         $smallArea = array();
         for ($i=0; $i < count($area); $i++) {
             $smallAreaChild = array();
@@ -26,7 +27,7 @@ class HotelSerchController extends Controller
             }
             $smallArea[$area[$i]['middleClass'][0]['middleClassCode']] = $smallAreaChild;
         }
-        return view('hotel.index',compact('middleArea','smallArea'));
+        return view('hotel.index',compact('middleArea','smallArea','hotelRanking'));
     }
 
     /**

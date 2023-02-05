@@ -132,9 +132,6 @@
             @endforeach
             </div>
         </section>
-        <button class="btn">
-            <span class="addBtn"><span class="material-symbols-outlined btn-font">send</span><span>
-        </button>
     </div>
     <div class="pop-up" id="pop-up">
         <div class="snow">●</div>

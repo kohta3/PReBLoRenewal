@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Hachi+Maru+Pop&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap');
 
 
 /* 全体 */
@@ -29,6 +29,10 @@ body {
 
 .pop-font{
     font-family: 'Hachi Maru Pop', cursive;
+}
+
+.smart-font{
+    font-family: 'Zen Old Mincho', serif;
 }
 
 /* ヘッダーの設定 */
@@ -68,9 +72,6 @@ body {
     border-radius: 50% 10%;
     transition: all 0.5s 0s ease;
     border: solid 3px rgb(0, 174, 255);
-    position: fixed;
-    bottom: 50px;
-    right: 10%;
 }
 
 .btn:hover {
@@ -487,4 +488,49 @@ print {
     width: 100%;
     aspect-ratio: 3/2;
     object-fit: cover;
+}
+
+.hotelRankImage{
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    transition: all 1s 0s ease;
+    border-radius: 30% 10px;
+}
+
+.hotelRankImage:hover{
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 10px 30%;
+}
+
+.hotelRank {
+    position: relative;
+    transition: all 1s 0s ease;
+    padding: 20px;
+    border-radius: 10%;
+    animation-name: hotelRank;/*アニメーションの名前*/
+    animation-fill-mode:forwards;/*最終的な状態*/
+    animation-duration:3s;/*アニメーションの時間*/
+    animation-iteration-count:1;/*繰り返し回数*/
+    animation-timing-function:ease;/*進行具合*/
+    animation-delay: 0.5s;/*開始までの時間*/
+    animation-direction:normal;/*順再生とか逆再生とか*/
+    }
+
+.hotelRank:hover{
+    background: linear-gradient(gray,white);
+    transform: scale(1.15,1.15);
+    border-radius: 10%;
+}
+
+@keyframes hotelRank{
+    0% {
+    opacity: 0;
+    }
+
+    100% {
+    opacity: 1;
+    }
 }

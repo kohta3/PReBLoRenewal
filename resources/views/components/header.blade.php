@@ -4,9 +4,16 @@
             <img src="{{ asset('img/logo.png') }}" alt="logo" height="50px" class="m-3">
         </div>
         <div class="col-md-4 text-right btn-parent">
+            <button class="btn">
+                <span class="addBtn"><span class="material-symbols-outlined btn-font">send</span><span>
+            </button>
         </div>
         <div class="col-md-4 d-flex align-items-center ms-auto">
-            <p class="m-0 w-100 text-right">こんにちはゲストさん</p>
+            @auth
+                <p class="m-0 w-100 text-right">こんにちは{{Auth::id()}}さん</p>
+            @else
+                <p class="m-0 w-100 text-right">こんにちはゲストさん</p>
+            @endauth
         </div>
     </div>
     <div class="row m-0 d-flex align-items-center">
@@ -19,7 +26,11 @@
             </ul>
         </div>
         <div class="col-md-6 text-right">
-            <a href="" class="text-dark text-decoration-none">ログアウト</a>
+            @auth
+                <a href="{{Auth::logout()}}" class="text-dark text-decoration-none">ログアウト</a>
+            @else
+                <a href="{{route('home')}}" class="text-dark text-decoration-none">ログイン</a>
+            @endauth
         </div>
     </div>
 </header>
