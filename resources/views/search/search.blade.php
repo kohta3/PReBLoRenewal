@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('body')
 <div class="snow"><i class="fas fa-snowflake"></i></div>
 <div class="snow snow2nd"><i class="fas fa-snowflake"></i></div>

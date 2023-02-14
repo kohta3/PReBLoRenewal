@@ -1,7 +1,19 @@
-@extends('layout.app')
+@extends('layouts.app')
 @section('body')
 <div class="snow"><i class="fas fa-snowflake"></i></div>
 <div class="snow snow2nd"><i class="fas fa-snowflake"></i></div>
+
+    {{-- session flash-massage --}}
+@if (session('flash_message'))
+    <div class="row m-0 text-success">
+        {{session('flash_message')}}
+    </div>
+@elseif (session('flash_logout'))
+    <div class="row m-0 text-danger">
+        {{session('flash_logout')}}
+    </div>
+@endif
+
 <div class="h-100 w-100 row m-0 index">
     {{-- サイドバー --}}
     <div class="sidebar col-md-3 Commercial">
@@ -133,6 +145,7 @@
             </div>
         </section>
     </div>
+    {{-- モーダル --}}
     <div class="pop-up" id="pop-up">
         <div class="snow">●</div>
         <div class="snow snow2nd">●</div>

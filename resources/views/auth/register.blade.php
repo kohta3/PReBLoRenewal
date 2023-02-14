@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.app')
 
 @section('body')
 <div class="container">
@@ -15,7 +15,7 @@
                     <label for="name" class="col-md-5 col-form-label text-md-left">ユーザー名<span class="ml-1"><span class="text-danger">必須</span></span></label>
 
                     <div class="col-md-7">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror samuraimart-login-input" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="〇〇太郎">
+                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror samuraimart-login-input" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="〇〇たろう">
 
                         @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                     <label for="email" class="col-md-5 col-form-label text-md-left">メールアドレス<span class="ml-1"><span class="text-danger">必須</span></span></label>
 
                     <div class="col-md-7">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror samuraimart-login-input" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="samurai@samurai.com">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror samuraimart-login-input" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="preblo@PReBLo.com">
 
                         @error('email')
                         <span class="invalid-feedback" role="alert">

@@ -27,6 +27,7 @@ class HotelSerchController extends Controller
             }
             $smallArea[$area[$i]['middleClass'][0]['middleClassCode']] = $smallAreaChild;
         }
+        // return redirect()->route('hotel')->with(compact('middleArea','smallArea','hotelRanking'));
         return view('hotel.index',compact('middleArea','smallArea','hotelRanking'));
     }
 
