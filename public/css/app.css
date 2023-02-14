@@ -28,7 +28,8 @@ body {
 }
 
 .pop-font{
-    font-family: 'Hachi Maru Pop', cursive;
+    /* font-family: 'Hachi Maru Pop', cursive; */
+    font-family: "Kokoro";
 }
 
 .smart-font{

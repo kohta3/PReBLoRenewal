@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Information;
-use App\Models\Infomation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Libs\Common;
+use App\Models\Infomation;
 use App\Models\Categories;
 use App\Models\Prefecture;
 use App\Models\User;
-use Hamcrest\Core\IsEqual;
 
 class InfomationController extends Controller
 {

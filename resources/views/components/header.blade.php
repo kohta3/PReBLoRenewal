@@ -10,7 +10,7 @@
         </div>
         <div class="col-md-4 d-flex align-items-center ms-auto">
             @auth
-                <p class="m-0 w-100 text-right">こんにちは{{Auth::id()}}さん</p>
+                <p class="m-0 w-100 text-right">こんにちは{{Auth::user()->name}}さん</p>
             @else
                 <p class="m-0 w-100 text-right">こんにちはゲストさん</p>
             @endauth
@@ -19,17 +19,27 @@
     <div class="row m-0 d-flex align-items-center">
         <div class="col-md-6">
             <ul class="list headerMenu">
-                <li><a href="{{ route('info.index')}}" class="text-dark text-decoration-none">トップ</a></li>
-                <li><a href="{{ route('hotel')}}" class="text-dark text-decoration-none">ホテル</a></li>
-                <li><a href="" class="text-dark text-decoration-none">お気に入り</a></li>
-                <li><a href="" class="text-dark text-decoration-none">アカウント管理</a></li>
+                @auth
+                    <li><a href="{{ route('info.index')}}" class="text-dark text-decoration-none">トップ</a></li>
+                    <li><a href="{{ route('hotel')}}" class="text-dark text-decoration-none">ホテル</a></li>
+                    <li><a href="" class="text-dark text-decoration-none">お気に入り</a></li>
+                    <li><a href="" class="text-dark text-decoration-none">アカウント管理</a></li>
+                @else
+                    <li><a href="{{ route('info.index')}}" class="text-dark text-decoration-none">トップ</a></li>
+                    <li><a href="{{ route('hotel')}}" class="text-dark text-decoration-none">ホテル</a></li>
+                @endauth
             </ul>
         </div>
         <div class="col-md-6 text-right">
             @auth
-                <a href="{{Auth::logout()}}" class="text-dark text-decoration-none">ログアウト</a>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    ログアウト
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
             @else
-                <a href="{{route('home')}}" class="text-dark text-decoration-none">ログイン</a>
+                <a href="{{route('home')}}" class="text-decoration-none">ログイン</a>
             @endauth
         </div>
     </div>
