@@ -1,4 +1,10 @@
 @extends('layouts.app')
+@section('head')
+    <title>ホテル検索</title>
+    <meta name="keyword" content="お気に入り 旅行 温泉 キャンプ ホテル レストラン 居酒屋">
+    <meta name="description" content="地域からホテルを検索できます。好きな地域を選択してホテルを予約しましょう。">
+
+@endsection
 @section('body')
 <div class="snow"><i class="fas fa-snowflake"></i></div>
 <div class="snow snow2nd"><i class="fas fa-snowflake"></i></div>

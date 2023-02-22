@@ -1,4 +1,15 @@
 @extends('layouts.app')
+@section('head')
+    <title>{{$detail->tittle }}</title>
+    <meta name="keyword" content="{{$detail->tittle }} {{$detail->pref}} {{$detail->city}} 旅行 温泉">
+    <meta name="description" content="{{$detail->pref}}{{$detail->city}}にあるスポット{{$detail->tittle }}です。コメントは 「{{$detail->comment}}」です。">
+    <meta property="og:url" content=" {{"https://www.preblo.site/info/".$detail->id}}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="PReBLo {{$detail->tittle}}" />
+    <meta property="og:description" content="{{$detail->pref}}{{$detail->city}}にあるスポット{{$detail->tittle }}です。コメントは 「{{$detail->comment}}」です。" />
+    <meta property="og:site_name" content="旅行の投稿PReBLo" />
+    <meta property="og:image" content="{{$detail->image}}" />
+@endsection
 @section('body')
     <div class="snow"><i class="fas fa-snowflake"></i></div>
     <div class="snow snow2nd"><i class="fas fa-snowflake"></i></div>
