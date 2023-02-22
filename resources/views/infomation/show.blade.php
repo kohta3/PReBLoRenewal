@@ -78,7 +78,7 @@
                         @if ($hotelList[0][0]!=='nodata')
                             @foreach ($hotelList[0] as $hotel)
                             <div class="cells">
-                                <a href="$hotel['hotelInformationUrl']"　class="text-left">{{ $hotel['hotelName'] }}</a>
+                                <a href="{{$hotel['hotelInformationUrl']}}" target="_blank"　class="text-left">{{ $hotel['hotelName'] }}</a>
                                 <div class="HotelInfoImageDiv">
                                     <img src="{{ $hotel['hotelImageUrl'] }}" alt="hotelImageUrl">
                                     <img src="{{ $hotel['roomImageUrl'] }}" alt="roomImageUrl">
@@ -89,7 +89,7 @@
                                 </div>
                                 <ul class="ListStyleNonw p-0">
                                     <li>{{ $hotel['address1'] . $hotel['address2'] }}</li>
-                                    <li><a href="$hotel['planListUrl']">プランを見る</a>
+                                    <li><a href="{{$hotel['planListUrl']}}" target="_blank">プランを見る</a>
                                         <label
                                             class="ml-3"><i class="fas fa-star" style="color: rgb(0, 174, 255)"></i>{{$hotel['reviewAverage'] . '(' . $hotel['reviewCount'] . '件)' }}</label>
                                     </li>
@@ -106,7 +106,7 @@
                     <div id="panel2" class="tab_panel">
                         @foreach ($restaurantList[0] as $restaurant)
                             <div class="cells">
-                                <a href="{{$restaurant['urls']['pc']}}">{{$restaurant['name']}}</a>
+                                <a href="{{$restaurant['urls']['pc']}}" target="_blank">{{$restaurant['name']}}</a>
                                 <div class="restaurantImg-div">
                                     <img src="{{$restaurant['photo']['pc']['l']}}" alt="restaurantImg">
                                 </div>

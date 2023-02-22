@@ -1,73 +1,38 @@
 @extends('layouts.app')
 
 @section('body')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <h3 class="mt-3 mb-3">新規会員登録</h3>
-
-            <hr>
-
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
-
-                <div class="form-group row">
-                    <label for="name" class="col-md-5 col-form-label text-md-left">ユーザー名<span class="ml-1"><span class="text-danger">必須</span></span></label>
-
-                    <div class="col-md-7">
-                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror samuraimart-login-input" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="〇〇たろう">
-
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>ユーザー名を入力してください</strong>
-                        </span>
-                        @enderror
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        新規ユーザー登録
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('register') }}">
+                            @csrf
+                            <div class="form-group">
+                                <label for="name">名前</label>
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required autocomplete="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">メールアドレス<span id="email-check"></span></label>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror samuraimart-login-input"  onchange="email_validation(this.value)" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="preblo@PReBLo.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">パスワード<span id="password-check"></span></label>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror samuraimart-login-input"name="password" required autocomplete="new-password">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">パスワード（確認用）</label>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" onchange="confirm_password(this.value)">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block mt-4">登録する</button>
+                        </form>
+                        <div class="back-animation material-symbols-outlined"><span class="flight">flight</span><span class="sailing">sailing</span></div>
                     </div>
                 </div>
-
-                <div class="form-group row">
-                    <label for="email" class="col-md-5 col-form-label text-md-left">メールアドレス<span class="ml-1"><span class="text-danger">必須</span></span></label>
-
-                    <div class="col-md-7">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror samuraimart-login-input" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="preblo@PReBLo.com">
-
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>メールアドレスを入力してください</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="password" class="col-md-5 col-form-label text-md-left">パスワード<span class="ml-1"><span class="text-danger">必須</span></span></label>
-
-                    <div class="col-md-7">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror samuraimart-login-input" name="password" required autocomplete="new-password">
-
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="password-confirm" class="col-md-5 col-form-label text-md-left">確認用</label>
-
-                    <div class="col-md-7">
-                        <input id="password-confirm" type="password" class="form-control samuraimart-login-input" name="password_confirmation" required autocomplete="new-password">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="samuraimart-submit-button w-100">
-                        アカウント作成
-                    </button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>
 @endsection

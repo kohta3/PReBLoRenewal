@@ -47,9 +47,7 @@
             @foreach ($hotelRanking as $hotel)
             <div class="col-md-3 my-3 hotelRank smart-font">
                 <div class="w-100">
-                    <a href="{{$hotel['hotelInformationUrl']}}">
-                        <img src="{{$hotel['hotelImageUrl']}}" alt="" class="hotelRankImage">
-                    </a>
+                    <a href="{{$hotel['hotelInformationUrl']}}"><img src="{{$hotel['hotelImageUrl']}}" alt="" class="hotelRankImage"></a>
                 </div>
                 <h3 class="text-left">{{$hotel['rank'].$hotel['hotelName']}}</h3>
             </div>

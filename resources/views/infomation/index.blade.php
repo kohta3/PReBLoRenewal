@@ -4,15 +4,20 @@
 <div class="snow snow2nd"><i class="fas fa-snowflake"></i></div>
 
     {{-- session flash-massage --}}
-@if (session('flash_message'))
-    <div class="row m-0 text-success">
-        {{session('flash_message')}}
-    </div>
-@elseif (session('flash_logout'))
-    <div class="row m-0 text-danger">
-        {{session('flash_logout')}}
-    </div>
-@endif
+
+    @if (session('flash_message'))
+        <div class="session-flash">
+            <div class="w-100 m-0 text-success text-center">
+                {{session('flash_message')}}
+            </div>
+        </div>
+    @elseif (session('flash_logout'))
+        <div class="session-flash">
+            <div class="w-100 m-0 text-danger text-center">
+                {{session('flash_logout')}}
+            </div>
+        </div>
+    @endif
 
 <div class="h-100 w-100 row m-0 index">
     {{-- サイドバー --}}
@@ -146,85 +151,153 @@
         </section>
     </div>
     {{-- モーダル --}}
-    <div class="pop-up" id="pop-up">
-        <div class="snow">●</div>
-        <div class="snow snow2nd">●</div>
-        <div class="pop-up-child">
-            <p>×</p>
+    <div class="pop-up card" id="pop-up">
+        <div class="pop-up-head">
+            <div class="pop-up-child">
+                <p class="material-symbols-outlined">close</p>
+            </div>
+         スポット投稿
         </div>
-        <form action="/" method="get">
-            <div class="pop-up-div">
-                <label for="array-img">写真を選択</label>
-                <input type="file" name="array-img" id="array-img"  accept=".jpg, .jpeg, .png">
-            </div>
+        <div class="pop-up-body">
+            <form method="POST" action="/info" enctype="multipart/form-data" onsubmit="return cancelSubmit()">
+                @csrf
+                <div class="pop-up-div">
+                    <div class="d-flex w-75">
+                        <select id="category" class="form-control" onchange="selectCategory({{$categories}},this.value)" required>
+                            <option hidden>メインカテゴリ</option>
+                            @foreach ( $mainCategory as $main)
+                                <option value="{{$main}}">{{$main}}</option>
+                            @endforeach
+                        </select>
+                        <select name="genre" id="genre" class="form-control mx-auto" required>
+                            <option hidden>サブカテゴリ</option>
+                        </select>
+                    </div>
+                </div>
 
-            <div class="pop-up-div">
-                <label for="title">スポット名</label>
-                <input type="text" name="title" id="title" >
-            </div>
+                <div class="pop-up-div">
+                    <label for="array_img" class="img-btn-decolate">画像を選択する
+                        <span class="material-symbols-outlined">add_a_photo</span>
+                        <span style="font-size: 5px">※最大4枚</span>
+                    </label>
+                    <input type="file" name="array_img[]" id="array_img" multiple accept=".jpg, .jpeg, .png" class="d-none">
+                </div>
 
-            <div class="pop-up-div">
-                <label for="comment">コメント</label>
-                <input type="text" name="comment" id="comment" >
-            </div>
+                <div class="pop-up-div">
+                    <div class="d-flex w-75">
+                        <select name="pref" id="pref" class="form-control" onchange="selectCity(this.value)" required>
+                            <option hidden>都道府県</option>
+                            @foreach ($prefecture as $pref)
+                                <option value="{{$pref->Pref}}">{{$pref->Pref}}</option>
+                            @endforeach
+                        </select>
+                        <select name="city" id="city" class="form-control mx-auto" required onchange="request_by_ajax(this.value)">
+                            <option hidden>市区町村</option>
+                        </select>
+                    </div>
+                </div>
 
-            <div class="pop-up-div">
-                <label for="about">説明</label>
-                <textarea name="about" id="about"></textarea>
-            </div>
+                <div class="pop-up-div">
+                    <div class="w-75">
+                        <label id="please-add"></label>
+                        <div id="getLatLong" class="mapStyle" style="display: none"></div>
+                        <input type="text" name="lat" id="lat" hidden>
+                        <input type="text" name="long" id="long" hidden>
+                    </div>
+                </div>
 
-            <div class="pop-up-div">
-                <label for="category">カテゴリー</label>
-                <select name="category" id="category">
-                    <option value="test1">test1</option>
-                    <option value="test2">test2</option>
-                    <option value="test3">test3</option>
-                    <option value="test4">test4</option>
-                </select>
-            </div>
+                <div class="pop-up-div">
+                    <input type="text" name="title" id="title" class="form-control" placeholder="スポット名(必須)" required>
+                </div>
 
-            <div class="pop-up-div">
-                <label for="genre">ジャンル</label>
-                <select name="genre" id="genre">
-                    <option value="genre">test1</option>
-                    <option value="genre">test2</option>
-                    <option value="genre">test3</option>
-                    <option value="genre">test4</option>
-                </select>
-            </div>
+                <div class="pop-up-div">
+                    <input type="text" name="comment" id="comment" class="form-control" placeholder="コメント(必須)" required>
+                </div>
 
-            <div class="pop-up-div">
-                <label for="monday">open1</label>
-                <input type="time" name="open1" id="open1" style="width: 30%">
-            </div>
+                <div class="pop-up-div">
+                    <textarea name="about" id="about" class="form-control" placeholder="詳細・備考"></textarea>
+                </div>
 
-            <div class="pop-up-div">
-                <label for="monday">close1</label>
-                <input type="time" name="close1" id="close1" style="width: 30%">
-            </div>
+                <div class="pop-up-div">
+                    <input type="url" name="url" id="url" class="form-control" placeholder="ホームページなど 例)https://example.com" pattern="https://.*">
+                </div>
 
-            <p class="fw-bold ml-3 mb-0">--------休日--------</p>
-            <div class="pop-up-div">
-                <label for="monday">月</label>
-                <input type="checkbox" name="monday" id="monday">
-                <label for="tuesday">火</label>
-                <input type="checkbox" name="tuesday" id="tuesday">
-                <label for="wednesday">水</label>
-                <input type="checkbox" name="wednesday" id="wednesday">
-                <label for="thursday">木</label>
-                <input type="checkbox" name="thursday" id="thursday">
-                <label for="friday">金</label>
-                <input type="checkbox" name="friday" id="friday">
-                <label for="saturday">土</label>
-                <input type="checkbox" name="saturday" id="saturday">
-                <label for="sunday">日</label>
-                <input type="checkbox" name="sunday" id="sunday">
-            </div>
+                <div class="pop-up-div">
+                    <input type="tel" name="tel" id="tel" class="form-control" placeholder="XXX(X)-XXXX-XXXX" pattern="\d{1,9}-\d{1,9}-\d{1,9}">
+                </div>
 
-            <div class="w-100 text-center">
-                <button>投稿</button>
-            </div>
-        </form>
+                <div class="mx-auto" style="width: 95%">
+                    <p class="w-75 mx-auto mb-1 text-light">①open～close</p>
+                    <div class="w-75 text-nowrap mx-auto">
+                        <input type="time" name="open1" id="open1" style="width: 45%; text-align:center">
+                        <label style="width: 10%" class="m-0 text-center">～</label>
+                        <input type="time" name="close1" id="close1" style="width: 45%; text-align:center">
+                    </div>
+                </div>
+
+                <div class="mx-auto" style="width: 95%">
+                    <p class="w-75 mx-auto my-1 text-light">②open～close</p>
+                    <div class="w-75 text-nowrap mx-auto">
+                        <input type="time" name="open2" id="open2" style="width: 45%; text-align:center">
+                        <label style="width: 10%" class="m-0 text-center">～</label>
+                        <input type="time" name="close2" id="close2" style="width: 45%; text-align:center">
+                    </div>
+                </div>
+
+                <div class="mx-auto" style="width: 95%">
+                    <p class="w-75 mx-auto my-1 text-light">休日</p>
+                    <div class="d-flex w-75 flex-wrap mx-auto">
+                        <div class="d-flex mx-4 my-1">
+                            <label for="monday" >月曜日</label>
+                            <input type="checkbox" name="monday" id="monday" value=true >
+                        </div>
+                        <div class="d-flex mx-4 my-1">
+                            <label for="tuesday" >火曜日</label>
+                            <input type="checkbox" name="tuesday" id="tuesday" value=true>
+                        </div>
+                        <div class="d-flex mx-4 my-1">
+                            <label for="wednesday" >水曜日</label>
+                            <input type="checkbox" name="wednesday" id="wednesday" value=true>
+                        </div>
+                        <div class="d-flex mx-4 my-1">
+                            <label for="thursday" >木曜日</label>
+                            <input type="checkbox" name="thursday" id="thursday" value=true>
+                        </div>
+                        <div class="d-flex mx-4 my-1">
+                            <label for="friday" >金曜日</label>
+                            <input type="checkbox" name="friday" id="friday" value=true>
+                        </div>
+                        <div class="d-flex mx-4 my-1">
+                            <label for="saturday" >土曜日</label>
+                            <input type="checkbox" name="saturday" id="saturday" value=true>
+                        </div>
+                        <div class="d-flex mx-4 my-1">
+                            <label for="sunday" >日曜日</label>
+                            <input type="checkbox" name="sunday" id="sunday" value=true>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mx-auto" style="width: 95%">
+                    <p class="w-75 mx-auto my-1 text-light">駐車場・駐輪場の有無</p>
+                    <div class="w-50 text-nowrap mx-auto d-flex justify-content-between">
+                        <div class="d-flex mr-3">
+                            <label for="tyushajo" class="my-auto">駐車場<label class="material-symbols-outlined text-info">airport_shuttle</label></label>
+                            <input type="checkbox" name="parkingcar" id="tyushajo" class="ml-1 text-left" value=true>
+                        </div>
+                        <div class="d-flex mr-3">
+                            <label for="tyurinjo" class="my-auto">駐輪場<label class="material-symbols-outlined text-info">two_wheeler</label></label>
+                            <input type="checkbox" name="parkingbicycles" id="tyurinjo" class="ml-1" value=true>
+                        </div>
+                    </div>
+                </div>
+                <div id="img-preview" class="my-2"></div>
+                <div class="w-100 text-center my-3">
+                    <button type="submit" class="pop-up-btn">投稿</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+<script src="{{ asset('js/map.js') }}"></script>
 @endsection

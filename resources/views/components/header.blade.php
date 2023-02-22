@@ -4,9 +4,16 @@
             <img src="{{ asset('img/logo.png') }}" alt="logo" height="50px" class="m-3">
         </div>
         <div class="col-md-4 text-right btn-parent">
-            <button class="btn">
-                <span class="addBtn"><span class="material-symbols-outlined btn-font">send</span><span>
-            </button>
+            @php
+                $now_url =str_replace(url('/'),"",request()->fullUrl());
+            @endphp
+            @auth
+                @if ($now_url=="")
+                    <button class="btnform">
+                        <span class="addBtn"><span class="material-symbols-outlined btn-font">send</span><span>
+                    </button>
+                @endif
+            @endauth
         </div>
         <div class="col-md-4 d-flex align-items-center ms-auto">
             @auth
@@ -20,26 +27,26 @@
         <div class="col-md-6">
             <ul class="list headerMenu">
                 @auth
-                    <li><a href="{{ route('info.index')}}" class="text-dark text-decoration-none">トップ</a></li>
+                    <li><a href="{{ route('index')}}" class="text-dark text-decoration-none">トップ</a></li>
                     <li><a href="{{ route('hotel')}}" class="text-dark text-decoration-none">ホテル</a></li>
-                    <li><a href="" class="text-dark text-decoration-none">お気に入り</a></li>
-                    <li><a href="" class="text-dark text-decoration-none">アカウント管理</a></li>
+                    <li><a href="{{url('favorite')}}" class="text-dark text-decoration-none">お気に入り</a></li>
+                    <li><a href="{{route('user.edit')}}" class="text-dark text-decoration-none">アカウント管理</a></li>
                 @else
-                    <li><a href="{{ route('info.index')}}" class="text-dark text-decoration-none">トップ</a></li>
+                    <li><a href="{{ route('index')}}" class="text-dark text-decoration-none">トップ</a></li>
                     <li><a href="{{ route('hotel')}}" class="text-dark text-decoration-none">ホテル</a></li>
                 @endauth
             </ul>
         </div>
         <div class="col-md-6 text-right">
             @auth
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    ログアウト
-                </a>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
+
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
             @else
-                <a href="{{route('home')}}" class="text-decoration-none">ログイン</a>
+                <a href="{{route('register')}}" class="text-decoration-none mr-3">サインアップ</a>
+                <a href="{{route('home')}}" class="text-decoration-none ml-3">ログイン</a>
             @endauth
         </div>
     </div>
