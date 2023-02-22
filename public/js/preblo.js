@@ -23,7 +23,7 @@ function selectCity(value) {
     $("#city").empty();
     $.ajax({
         type:"GET",
-        url:"http://geoapi.heartrails.com/api/json?method=getCities&prefecture="+value,
+        url:"https://geoapi.heartrails.com/api/json?method=getCities&prefecture="+value,
         dataType:"json"
     }).done(function(data) {
         $("#city").append('<option hidden>市区町村</option>');
