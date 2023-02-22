@@ -15,14 +15,14 @@
     <div class="mx-auto w-75 mt-4">
         <table class="mx-auto">
             @if (session('flash_message'))
-                <div class="" style="background-color: rgb(252, 255, 220)">
+                <div class="text-success" style="background-color: rgb(252, 255, 220)">
                         {{session('flash_message')}}
                 </div>
             @endif
             <tbody>
                 <tr>
-                    <td>ユーザー名</td>
-                    <td>
+                    <td class="text-nowrap">ユーザー名</td>
+                    <td class="text-nowrap">
                         <form method="POST" action="{{route('user.update')}}">
                             @csrf
                             <input type="hidden" name="_method" value="PUT">

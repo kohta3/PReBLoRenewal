@@ -215,17 +215,36 @@ label[for="imageChange"] {
     cursor: pointer;
 }
 
-#user_update_btn{
-    border: none;
-    background-color: #a8f9ff;
-    padding: 3px;
-    margin: 0 4px;
-    border-radius: 10px;
-    box-shadow: 0 0 2px 2px #00aeff;
-    transition: 0.5s ease-in-out;
+/* PC画面 */
+@media screen and (min-width: 768px),
+print {
+    #user_update_btn{
+        border: none;
+        background-color: #a8f9ff;
+        padding: 3px;
+        margin: 0 4px;
+        border-radius: 10px;
+        box-shadow: 0 0 2px 2px #00aeff;
+        transition: 0.5s ease-in-out;
+    }
+
+    #user_update_btn:hover{
+        background-color: #76e4ff;
+        transform: scale(1.1,1.1);
+    }
 }
 
-#user_update_btn:hover{
-    background-color: #76e4ff;
-    transform: scale(1.1,1.1);
+/* スマホ画面 */
+@media screen and (max-width: 768px) {
+    #user_update_btn{
+        border: none;
+        background-color: #a8f9ff;
+        padding: 3px;
+        margin: 0 4px;
+        border-radius: 10px;
+        box-shadow: 0 0 2px 2px #00aeff;
+        transition: 0.5s ease-in-out;
+    }
 }
+
+
