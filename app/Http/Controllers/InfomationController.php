@@ -122,6 +122,7 @@ class InfomationController extends Controller
             $information->image4='';
         }
 
+        dd($information);
         try {
             $information->save();
             session()->flash('flash_success', '投稿が完了しました！ありがとうございました！');
