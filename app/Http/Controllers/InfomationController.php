@@ -65,7 +65,7 @@ class InfomationController extends Controller
         $information->pref = $request->pref;
         $information->city = $request->city;
         $information->url = $request->url;
-        $information->about = $request->about;
+        $information->about = $request->about?$request->about:"備考無し";
         $information->opne1 = $request->open1;
         $information->close1 = $request->close1;
         $information->opne2 = $request->open2;
