@@ -10,6 +10,7 @@ use App\Http\Controllers\AuthSreachController;
 use App\Http\Controllers\AuthInformationController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SitemapController;
 use Doctrine\DBAL\Schema\Index;
 use Illuminate\Support\Facades\Route;
 
@@ -33,3 +34,5 @@ Route::get('hotel/search/{kindOf}/{key}', [App\Http\Controllers\SearchController
 Route::resource('favorite',FavoriteController::class)->middleware('verified');
 Route::get('user/edit', [UserController::class,'edit'])->name('user.edit')->middleware('verified');
 Route::put('user/update', [UserController::class,'update'])->name('user.update')->middleware('verified');
+//siteMap
+Route::get('/sitemap', [App\Http\Controllers\SitemapController::class, 'index'])->name('sitemap');

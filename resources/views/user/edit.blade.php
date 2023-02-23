@@ -12,8 +12,8 @@
 @endsection
 
 @section('body')
-    <div class="mx-auto w-75 mt-4">
-        <table class="mx-auto">
+    <div class="mx-auto w-100 mt-4">
+        <table class="mx-auto w-75">
             @if (session('flash_message'))
                 <div class="text-success" style="background-color: rgb(252, 255, 220)">
                         {{session('flash_message')}}
