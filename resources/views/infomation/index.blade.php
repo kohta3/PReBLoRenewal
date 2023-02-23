@@ -144,7 +144,7 @@
                 @foreach ($infos as $info)
                 <div class="col-md-3 base-relative mb-3">
                     <a href="{{ route('info.show',$info->id)}}">
-                        @if ($info->image=='')
+                        @if ($info->image!=='')
                             <img src="{{$info->image}}" alt="{{$info->tittle}}">
                         @else
                             <img src="{{asset('img/meta1.jpg')}}" alt="最新の投稿">
