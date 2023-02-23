@@ -122,12 +122,12 @@ class InfomationController extends Controller
             $information->image4='';
         }
 
-        try {
+        // try {
             $information->save();
             session()->flash('flash_success', '投稿が完了しました！ありがとうございました！');
-        } catch (\Throwable $th) {
-            session()->flash('flash_warn', '投稿に失敗しました');
-        }
+        // } catch (\Throwable $th) {
+        //     session()->flash('flash_warn', '投稿に失敗しました');
+        // }
 
         return redirect(url('/'));
     }
