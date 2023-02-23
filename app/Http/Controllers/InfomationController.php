@@ -123,11 +123,9 @@ class InfomationController extends Controller
         }
 
         try {
-            dd('testOK');
             $information->save();
             session()->flash('flash_success', '投稿が完了しました！ありがとうございました！');
         } catch (\Throwable $th) {
-            dd($th);
             session()->flash('flash_warn', '投稿に失敗しました');
         }
 
