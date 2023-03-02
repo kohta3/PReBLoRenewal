@@ -140,7 +140,7 @@
 
         <section id="newAdd">
             <h1 class="mb-1">最新の投稿</h1>
-            <div class="row text-white w-100 m-0 pop-font">
+            <div class="row text-white w-100 mx-0 mt-0 mb-5 pop-font">
                 @foreach ($infos as $info)
                 <div class="col-md-3 base-relative mb-3">
                     <a href="{{ route('info.show',$info->id)}}">
