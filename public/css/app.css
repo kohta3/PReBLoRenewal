@@ -316,10 +316,14 @@ print {
 
     .Commercial {
         display: block;
+    }
+
+    .headerCommercial{
         display: flex;
         justify-content: space-around;
         width: 100%;
         text-align: center;
+        margin: 15px 0;
     }
 }
 
