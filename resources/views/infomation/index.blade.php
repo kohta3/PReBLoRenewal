@@ -110,7 +110,7 @@
                                     <h1>{{$i+1}}位</h1>
                                     <h2>【{{$famouses[$i]->tittle}}】</h2>
                                 </div>
-                                <h3 class="m-0 pl-3">{{$famouses[$i]->pref.'>'.$famouses[$i]->city}}</h3>
+                                <h3 class="m-0 px-3 text-right">{{$famouses[$i]->pref.'>'.$famouses[$i]->city}}</h3>
                             </div>
                             <div class="relative-child2 text-white">
                                 <div class="pl-3">
@@ -152,7 +152,7 @@
                             <div class="d-flex text-nowrap m-0 pl-2">
                                 <h2>【{{$info->tittle}}】</h2>
                             </div>
-                            <h3 class="m-0 pl-3">{{$info->pref.'>'.$info->city}}</h3>
+                            <h3 class="m-0 px-3 text-right">{{$info->pref.'>'.$info->city}}</h3>
                         </div>
                         <div class="relative-child2 text-white">
                             <div class="pl-3">
