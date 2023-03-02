@@ -96,8 +96,7 @@
         @component('components.commercial2')
         @endcomponent
     </div>
-    <div class="col-md-9 p-2">
-
+    <div class="col-md-9 p-3 ">
         {{-- 人気な投稿 --}}
         <section id="famous">
             <h1>人気な投稿</h1>
