@@ -94,19 +94,19 @@ class InfomationController extends Controller
                 $images = $request->file('array_img');
                 foreach ( $images as $index=>$image) {
                     $path = Storage::disk('s3')->putFile('/starage', $image, 'public');
-                    $url[] = Storage::disk('s3')->url($path);
+                    $url = Storage::disk('s3')->url($path);
                     switch ($index) {
                         case 1:
-                            $information->image = $url[0];
+                            $information->image = $url;
                             break;
                         case 2;
-                            $information->image2 = $url[1];
+                            $information->image2 = $url;
                             break;
                         case 3;
-                            $information->image3 = $url[2];
+                            $information->image3 = $url;
                             break;
                         case 4;
-                            $information->image4 = $url[3];
+                            $information->image4 = $url;
                             break;
                         default:
                             break;

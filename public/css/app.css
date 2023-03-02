@@ -252,18 +252,36 @@ print {
     border-radius: 15px;
 }
 
-.base-relative {
-    position: relative;
-    width: 100%;
-    padding: 0;
-    transition: all 0.5s 0s ease;
-    text-align: center;
+/* pc画面 */
+@media screen and (min-width: 768px),
+print {
+    .base-relative {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        transition: all 0.5s 0s ease;
+        text-align: center;
+        margin: 10px auto;
+    }
+
+    .base-relative:hover {
+        transform: scale(1.1, 1.1);
+        cursor: pointer;
+    }
 }
 
-.base-relative:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer;
+/* スマホ画面 */
+@media screen and (max-width: 768px) {
+    .base-relative {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        transition: all 0.5s 0s ease;
+        text-align: center;
+        margin: 20px auto;
+    }
 }
+
 
 .relative-child1 {
     width: 95%;
@@ -288,23 +306,6 @@ print {
     background-color: rgba(175, 172, 172, 0.7);
 }
 
-
-/* pc画面 */
-@media screen and (min-width: 768px),
-print {
-    .Commercial {
-        display: block;
-    }
-}
-
-/* スマホ画面 */
-@media screen and (max-width: 768px) {
-    .Commercial {
-        display: none;
-    }
-}
-
-
 /* addNew */
 /* pc画面 */
 @media screen and (min-width: 768px),
@@ -312,12 +313,20 @@ print {
     .pop-up {
         width: 40%;
     }
+
+    .Commercial {
+        display: block;
+    }
 }
 
 /* スマホ画面 */
 @media screen and (max-width: 768px) {
     .pop-up {
         width: 80%;
+    }
+
+    .Commercial {
+        display: none;
     }
 }
 
@@ -546,19 +555,38 @@ form[action="/"] select option{
     margin: 10px auto;
 }
 
-.genreOrPrefImg {
-    width: 100%;
-    aspect-ratio: 3/2;
-    padding: 10px;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    transition: 1s ease;
+/* pc画面 */
+@media screen and (min-width: 768px),
+print {
+    .genreOrPrefImg {
+        width: 100%;
+        aspect-ratio: 3/2;
+        padding: 10px;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 1s ease;
+    }
+
+    .genreOrPrefImg:hover{
+        transform: scale(1.15,1.15);
+        z-index: 1;
+    }
+
 }
 
-.genreOrPrefImg:hover{
-    transform: scale(1.15,1.15);
-    z-index: 1;
+/* スマホ画面 */
+@media screen and (max-width: 768px) {
+    .genreOrPrefImg {
+        width: 100%;
+        aspect-ratio: 3/2;
+        padding: 10px;
+        margin:10px 0;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 1s ease;
+    }
 }
 
 .KindAbsolute {

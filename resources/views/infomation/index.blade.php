@@ -103,7 +103,7 @@
             <h1>人気な投稿</h1>
             <div class="row text-white w-100 m-0 pop-font">
                 @for ($i = 0; $i < count($famouses); $i++)
-                    <div class="col-md-4 base-relative mx-auto my-1">
+                    <div class="col-md-4 base-relative">
                         <a class="text-center" href='{{ route('info.show',$famouses[$i]->id)}}'>
                             <img src="{{$famouses[$i]->image}}" alt="{{$i}}番目の人気">
                             <div class="relative-child1 text-white">
