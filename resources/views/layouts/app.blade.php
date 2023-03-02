@@ -53,7 +53,7 @@
 
 <body>
     {{-- バナー広告 --}}
-    <div class="w-100 text-center Commercial my-2 d-flex justify-content-around">
+    <div class="Commercial">
         <a href="https://hb.afl.rakuten.co.jp/hsc/2e161105.b27509fe.20bca631.12bbb9d1/?link_type=pict&ut=eyJwYWdlIjoic2hvcCIsInR5cGUiOiJwaWN0IiwiY29sIjoxLCJjYXQiOiI0NCIsImJhbiI6IjQ2MDEzNSIsImFtcCI6ZmFsc2V9" target="_blank" rel="nofollow sponsored noopener" style="word-wrap:break-word;">
         <img src="https://hbb.afl.rakuten.co.jp/hsb/2e161105.b27509fe.20bca631.12bbb9d1/?me_id=1&me_adv_id=460135&t=pict" border="0" style="margin:2px" alt="" title="" class="mx-auto"></a>
         <a href="https://px.a8.net/svt/ejp?a8mat=3N441R+9CDXKI+AD2+2BEM4X" rel="nofollow">

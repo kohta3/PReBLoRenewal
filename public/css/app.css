@@ -316,6 +316,10 @@ print {
 
     .Commercial {
         display: block;
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        text-align: center;
     }
 }
 
