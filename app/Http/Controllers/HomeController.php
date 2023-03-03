@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect('/info')->with('flash_message', 'ログインしました');
+        return redirect('/')->with('flash_message', 'ログインしました');
     }
 }

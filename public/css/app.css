@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Potta+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap');
 
 /* 全体 */
 body {
@@ -65,22 +65,39 @@ body {
     margin: auto;
 }
 
-.btn {
-    height: 60px;
-    width: 80px;
-    color: white;
-    background: linear-gradient(to top right ,blue, 30%, rgb(233, 129, 247) , skyblue);
-    border-radius: 50% 10%;
-    transition: all 0.5s 0s ease;
-    border: solid 3px rgb(0, 174, 255);
+/* PC画面 */
+@media screen and (min-width: 768px),
+print {
+    .btnform {
+        height: 60px;
+        width: 80px;
+        color: white;
+        background: linear-gradient(to top right ,blue, 30%, rgb(233, 129, 247) , skyblue);
+        border-radius: 50% 10%;
+        transition: all 0.5s 0s ease;
+        border: solid 3px rgb(0, 174, 255);
+    }
+
+    .btnform:hover {
+        color: white;
+        background: linear-gradient(to top left ,blue, 30%, rgb(233, 129, 247) , skyblue);
+        border-radius: 10% 50%;
+        transform: scale(1.2, 1.2);
+        border: solid 3px rgb(0, 174, 255);
+    }
 }
 
-.btn:hover {
-    color: white;
-    background: linear-gradient(to top left ,blue, 30%, rgb(233, 129, 247) , skyblue);
-    border-radius: 10% 50%;
-    transform: scale(1.2, 1.2);
-    border: solid 3px rgb(0, 174, 255);
+/* スマホ画面 */
+@media screen and (max-width: 768px) {
+    .btnform {
+        height: 60px;
+        width: 80px;
+        color: white;
+        background: linear-gradient(to top right ,blue, 30%, rgb(233, 129, 247) , skyblue);
+        border-radius: 50% 10%;
+        transition: all 0.5s 0s ease;
+        border: solid 3px rgb(0, 174, 255);
+    }
 }
 
 .addBtn {
@@ -99,6 +116,15 @@ body {
 
 .headerMenu{
     font-family: 'Potta One', cursive;
+}
+
+.headerMenu li{
+    text-align: center;
+}
+
+.headerMenu li:hover{
+    background-color: rgba(217,217,217,0.5);
+    border-radius: 10px;
 }
 
 .pagenate{
@@ -137,6 +163,11 @@ body {
     padding: 5px;
     margin: 0;
     font-size: medium;
+    transition: 0.3s ease-in-out;
+}
+
+.sidebar a {
+    color: white;
 }
 
 .sidebar p:hover {
@@ -202,6 +233,13 @@ body {
 }
 
 /* TOPページ */
+.session-flash{
+    margin: 10px auto;
+    width: 90%;
+    padding: 10px;
+    background-color: rgb(255, 255, 209);
+}
+
 .観光,
 .宿泊,
 .飲食 {
@@ -212,7 +250,7 @@ body {
 
 #famous,
 #newAdd {
-    margin: 3px;
+    margin: 5px 10px;
 }
 
 #famous img,
@@ -223,22 +261,43 @@ body {
     border-radius: 15px;
 }
 
-.base-relative {
-    position: relative;
-    width: 100%;
-    padding: 0;
-    transition: all 0.5s 0s ease;
+/* pc画面 */
+@media screen and (min-width: 768px),
+print {
+    .base-relative {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        transition: all 0.5s 0s ease;
+        text-align: center;
+        margin: 10px auto;
+    }
+
+    .base-relative:hover {
+        transform: scale(1.1, 1.1);
+        cursor: pointer;
+    }
 }
 
-.base-relative:hover {
-    transform: scale(1.1, 1.1);
-    cursor: pointer;
+/* スマホ画面 */
+@media screen and (max-width: 768px) {
+    .base-relative {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        transition: all 0.5s 0s ease;
+        text-align: center;
+        margin: 20px auto;
+    }
 }
+
 
 .relative-child1 {
     width: 95%;
     position: absolute;
     top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     background-color: rgba(59, 183, 255, 0.5);
@@ -248,103 +307,147 @@ body {
     width: 95%;
     position: absolute;
     bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: left;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     background-color: rgba(175, 172, 172, 0.7);
 }
-
-
-/* pc画面 */
-@media screen and (min-width: 768px),
-print {
-    .Commercial {
-        display: block;
-    }
-}
-
-/* スマホ画面 */
-@media screen and (max-width: 768px) {
-    .Commercial {
-        display: none;
-    }
-}
-
 
 /* addNew */
 /* pc画面 */
 @media screen and (min-width: 768px),
 print {
     .pop-up {
-        position: absolute;
-        border: solid;
-        background-color: antiquewhite;
-        border-radius: 15px;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        width: 25%;
-        height: 700px;
-        background-image: url("../img/雪だるま.png");
+        width: 40%;
     }
 
-    .pop-up form label {
-        width: 30%;
-        height: auto;
-        margin: auto 5px;
-        text-align: right;
-        white-space: nowrap;
+    .Commercial {
+        display: block;
     }
 
-    .pop-up form input,
-    .pop-up form textarea {
-        width: 70%;
-        margin: auto 0;
+    .headerCommercial{
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        text-align: center;
+        margin: 15px 0;
     }
 }
 
 /* スマホ画面 */
 @media screen and (max-width: 768px) {
     .pop-up {
-        position: absolute;
-        border: solid;
-        background-color: antiquewhite;
-        border-radius: 15px;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
         width: 80%;
-        height: 700px;
     }
 
-    .pop-up form label {
-        width: 25%;
-        height: auto;
-        margin: auto 5px;
-        text-align: right;
-        white-space: nowrap;
-        font-size: 1vw;
+    .Commercial {
+        display: none;
     }
+}
 
-    .pop-up form input,
-    .pop-up form textarea {
-        width: 75%;
-        margin: auto 0;
-    }
+.pop-up form input,
+.pop-up form textarea {
+    width: 75%;
+    margin: auto;
+    transition: 0.5s ease-in-out;
+    background-color: rgb(173, 173, 173);
+}
+
+.pop-up form input:focus,
+.pop-up form textarea:focus{
+    width: 95%;
+    box-shadow: 0 0 5px 5px skyblue;
+    background-color: rgb(255, 255, 255);
+}
+
+.pop-up form label{
+    white-space: nowrap;
+    margin: auto;
+}
+
+.img-btn-decolate{
+    padding: 10px;
+    background-color: skyblue;
+    transition: 0.5s ease-in-out ;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.img-btn-decolate:hover{
+    background-color: pink;
+    box-shadow: 0 0 5px;
+}
+
+.img-btn-decolate:active{
+    box-shadow: inset 0 0 5px;
+}
+
+form[action="/"] select{
+    width: 49%;
+}
+
+form[action="/"] select option{
+    font-size: 15px;
 }
 
 .pop-up-div {
-    width: 90%;
+    width: 95%;
     display: flex;
-    margin: 3px auto;
+    justify-content: center;
+    margin: 10px auto;
 }
 
 #pop-up {
+    position: absolute;
+    border: solid;
+    border-radius: 15px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 15px auto;
     display: none;
+    background:linear-gradient(45deg,rgb(254,139,250),rgb(131,189,251));
 }
+
+#pop-up ::placeholder{
+    color: white;
+}
+
+.pop-up-head{
+    background:linear-gradient(225deg,rgb(252, 101, 247),rgb(96, 173, 255));
+    font-size: 24px;
+    font-family: 'Kaisei HarunoUmi', serif;
+    border-radius: 15px 15px 0 0;
+    padding: 10px 0 10px 5px;
+    overflow: hidden;
+    height: 10%;
+}
+
+.pop-up-body{
+    height: 90%;
+    padding: 10px 0;
+}
+
+.pop-up-body form{
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.pop-up-body form::-webkit-scrollbar{
+    width: 2vh;
+ }
+.pop-up-body form::-webkit-scrollbar-track{
+    background-color: #ccc;
+    border-radius: 30px;
+}
+.pop-up-body form::-webkit-scrollbar-thumb{
+    background-color: #acffe3;
+    border-radius: 30px;
+}
+
 
 .pop-up-child {
     text-align: right;
@@ -356,12 +459,37 @@ print {
     padding: auto;
     font-size: x-large;
     text-align: center;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .pop-up-child p:hover {
     cursor: pointer;
     color: blue;
     font-weight: bold;
+}
+
+.add_info_image{
+    aspect-ratio: 5 / 3;
+    object-fit: contain;
+}
+
+.pop-up-btn{
+    border-radius: 20px 0;
+    transition: 0.5s ease-in-out;
+    border: none;
+    padding: 10px 20px;
+    background-color: rgb(177, 255, 255);
+}
+
+.pop-up-btn:hover{
+    border-radius: 0 20px;
+    background-color: pink;
+}
+
+.mapStyle{
+    aspect-ratio: 5 / 3;
+    border-radius: 15px;
 }
 
 /* ホテル検索ページ */
@@ -444,18 +572,44 @@ print {
     margin: 10px auto;
 }
 
-.genreOrPrefImg {
-    width: 100%;
-    aspect-ratio: 3/2;
-    padding: 3px;
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
+/* pc画面 */
+@media screen and (min-width: 768px),
+print {
+    .genreOrPrefImg {
+        width: 100%;
+        aspect-ratio: 3/2;
+        padding: 10px;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 1s ease;
+    }
+
+    .genreOrPrefImg:hover{
+        transform: scale(1.15,1.15);
+        z-index: 1;
+    }
+
+}
+
+/* スマホ画面 */
+@media screen and (max-width: 768px) {
+    .genreOrPrefImg {
+        width: 100%;
+        aspect-ratio: 3/2;
+        padding: 10px;
+        margin:10px 0;
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 1s ease;
+    }
 }
 
 .KindAbsolute {
     position: absolute;
     background-color: rgba(122, 213, 255, 0.5);
+    border-radius: 20px 0 0 0;
 }
 
 .ul {
@@ -464,12 +618,14 @@ print {
     display: flex;
     bottom: 0;
     right: 0;
-    padding: 0 5px 0 0;
-    margin: 0;
+    border-radius: 0 0 25px 0;
+    padding: 0 20px;
+    margin: 0 10px 3px 0;
     font-weight: bold;
     font-family: 'DotGothic16', sans-serif;
     font-family: 'Hachi Maru Pop', cursive;
     background-color: rgba(122, 213, 255, 0.5);
+    overflow: hidden;
 }
 
 .ul li{
@@ -486,6 +642,7 @@ print {
 }
 
 .genreOrPref img {
+    border-radius: 20px;
     width: 100%;
     aspect-ratio: 3/2;
     object-fit: cover;
@@ -534,4 +691,193 @@ print {
     100% {
     opacity: 1;
     }
+}
+
+
+/* loginフォーム */
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 24px;
+}
+
+.card-body {
+    padding: 30px;
+    width: 100%;
+    position: relative;
+}
+
+.card-body form{
+    width: 100%;
+    margin: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.back-animation{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1;
+    animation: loginAnimation 3s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes loginAnimation{
+    0%{
+        width: 0%;
+        background:skyblue;
+    }
+
+    40%{
+        background-color: rgb(255, 255, 202);
+    }
+
+    100%{
+        width: 100%;
+        background:rgb(252, 230, 234);
+    }
+}
+
+.flight{
+    position: relative;
+    z-index: 2;
+    top: -5%;
+    left: 5%;
+    color: orange;
+    text-shadow:
+    10vh 10px 1px,
+    22vh 20px 1px,
+    30vh 25px 1px;
+    animation: flight 5s linear infinite;
+}
+
+@keyframes flight {
+    0% {transform:rotate(0deg);}
+   40% {opacity:1;}
+   100% {transform:rotate(90deg);top:90%;opacity:0;}
+}
+
+.sailing{
+    position: relative;
+    top: -10%;
+    left: 20%;
+    color: skyblue;
+    z-index: 2;
+    text-shadow:
+    10vh 10px 1px,
+    17vh 100px 1px;
+    animation: sailing 5s linear infinite;
+}
+
+@keyframes sailing {
+  100% {color:transparent;top:90%;opacity:0;}
+}
+
+.form-control {
+    border-radius: 0;
+}
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+#email,#password,#name,#password-confirm{
+    width: 80%;
+    margin: auto;
+    transition: all 0.5s 0s ease;
+}
+
+#email:focus,#password:focus,#name:focus,#password-confirm:focus{
+    width: 100%;
+}
+
+button[type="submit"]{
+    margin: 15px 0;
+    border-radius: 25px 10px;
+    transition: 0.5s ease-in-out 0.01s;
+}
+
+button[type="submit"]:hover{
+    border-radius: 10px 25px;
+    color: black;
+    background-color: rgb(255, 221, 227);
+}
+
+
+/* favorite */
+#favorite_map{
+    width: 90%;
+    height: 70vh;
+    margin: 10px auto;
+}
+
+.favorite_card{
+    width: 90%;
+    margin: 0 auto 10px auto;
+    height: 30vh;
+    overflow-x: scroll;
+    display: flex;
+    background-color: white;
+    scroll-behavior: smooth;
+}
+
+
+.favorite_card::-webkit-scrollbar{
+    border-radius: 30px;
+    width: 2vh;
+ }
+.favorite_card::-webkit-scrollbar-track{
+    background-color: #ccc;
+    border-radius: 30px;
+}
+.favorite_card::-webkit-scrollbar-thumb{
+    background: linear-gradient(90deg,pink,skyblue);
+    border-radius: 30px;
+}
+
+@media screen and (min-width: 768px){
+    .favo_child{
+        min-width: 20%;
+        max-width: 20%;
+        height: 100%;
+    }
+}
+
+/* スマホ画面 */
+@media screen and (max-width: 768px) {
+    .favo_child{
+        min-width: 60%;
+        max-width: 60%;
+        height: 100%;
+    }
+}
+
+.favo_header{
+    font-size: 15px;
+    width: 100%;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 1;
+}
+
+.favo_body{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #acffe3;
+}
+
+.favo_body img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
 }

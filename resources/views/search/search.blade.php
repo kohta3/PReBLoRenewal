@@ -1,4 +1,16 @@
 @extends('layouts.app')
+@section('head')
+    <title>地域・ジャンル検索</title>
+    <meta name="keyword" content="旅行 温泉 キャンプ ホテル レストラン 居酒屋 旅行 温泉">
+    <meta name="description" content="飲食店と宿泊施設と観光地にジャンル分けされた施設の中からお気に入りのスポットをみつけることができます。">
+    <meta property="og:url" content="https://www.preblo.site" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="旅行の投稿PReBLo" />
+    <meta property="og:description" content="飲食店と宿泊施設と観光地にジャンル分けされた施設の中からお気に入りのスポットをみつけることができます。" />
+    <meta property="og:site_name" content="旅行の投稿PReBLo" />
+    <meta property="og:image" content="{{asset('img/screen.png')}}" />
+@endsection
+
 @section('body')
 <div class="snow"><i class="fas fa-snowflake"></i></div>
 <div class="snow snow2nd"><i class="fas fa-snowflake"></i></div>

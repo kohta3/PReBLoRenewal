@@ -4,9 +4,16 @@
             <img src="{{ asset('img/logo.png') }}" alt="logo" height="50px" class="m-3">
         </div>
         <div class="col-md-4 text-right btn-parent">
-            <button class="btn">
-                <span class="addBtn"><span class="material-symbols-outlined btn-font">send</span><span>
-            </button>
+            @php
+                $now_url =str_replace(url('/'),"",request()->fullUrl());
+            @endphp
+            @auth
+                @if ($now_url=="")
+                    <button class="btnform">
+                        <span class="addBtn"><span class="material-symbols-outlined btn-font">send</span><span>
+                    </button>
+                @endif
+            @endauth
         </div>
         <div class="col-md-4 d-flex align-items-center ms-auto">
             @auth
@@ -16,31 +23,36 @@
             @endauth
         </div>
     </div>
-    <div class="row m-0 d-flex align-items-center">
-        <div class="col-md-6">
-            <ul class="list headerMenu">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-1">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            {{-- <a class="navbar-brand" href="#">Hidden brand</a> --}}
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 headerMenu">
                 @auth
-                    <li><a href="{{ route('info.index')}}" class="text-dark text-decoration-none">トップ</a></li>
-                    <li><a href="{{ route('hotel')}}" class="text-dark text-decoration-none">ホテル</a></li>
-                    <li><a href="" class="text-dark text-decoration-none">お気に入り</a></li>
-                    <li><a href="" class="text-dark text-decoration-none">アカウント管理</a></li>
+                    <li class="nav-item"><a href="{{ route('index')}}" class="text-dark text-decoration-none nav-link">トップ</a></li>
+                    <li class="nav-item"><a href="{{ route('hotel')}}" class="text-dark text-decoration-none nav-link">ホテル</a></li>
+                    <li class="nav-item"><a href="{{url('favorite')}}" class="text-dark text-decoration-none nav-link">お気に入り</a></li>
+                    <li class="nav-item"><a href="{{route('user.edit')}}" class="text-dark text-decoration-none nav-link">アカウント管理</a></li>
                 @else
-                    <li><a href="{{ route('info.index')}}" class="text-dark text-decoration-none">トップ</a></li>
-                    <li><a href="{{ route('hotel')}}" class="text-dark text-decoration-none">ホテル</a></li>
+                    <li class="nav-item"><a href="{{ route('index')}}" class="text-dark text-decoration-none nav-link">トップ</a></li>
+                    <li class="nav-item"><a href="{{ route('hotel')}}" class="text-dark text-decoration-none nav-link">ホテル</a></li>
                 @endauth
             </ul>
-        </div>
-        <div class="col-md-6 text-right">
             @auth
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    ログアウト
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
+                <div class="d-flex justify-content-end">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
             @else
-                <a href="{{route('home')}}" class="text-decoration-none">ログイン</a>
+                <div class="d-flex justify-content-end">
+                    <a href="{{route('register')}}" class="text-decoration-none mr-3">サインアップ</a>
+                    <a href="{{route('home')}}" class="text-decoration-none ml-3">サインイン</a>
+                </div>
             @endauth
         </div>
-    </div>
+      </nav>
 </header>

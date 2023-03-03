@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Infomation;
+use App\Models\likes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FavoriteController extends Controller
 {
@@ -13,7 +17,11 @@ class FavoriteController extends Controller
      */
     public function index()
     {
-        //
+        $favo_info = DB::table('likes')
+                        ->join('information', 'likes.information_id', '=', 'information.id')
+                        ->where('likes.user_id','=',Auth::id())
+                        ->get();
+        return view('favorite.favorite',compact('favo_info'));
     }
 
     /**
