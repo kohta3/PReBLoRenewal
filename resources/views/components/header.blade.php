@@ -50,7 +50,7 @@
             @else
                 <div class="d-flex justify-content-end">
                     <a href="{{route('register')}}" class="text-decoration-none mr-3">サインアップ</a>
-                    <a href="{{route('home')}}" class="text-decoration-none ml-3">ログイン</a>
+                    <a href="{{route('home')}}" class="text-decoration-none ml-3">サインイン</a>
                 </div>
             @endauth
         </div>
